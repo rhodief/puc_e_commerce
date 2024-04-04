@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-search">
+                <img src="img/logo.png" alt="Logomarca" class="logo">
+                <input type="text" placeholder="Buscar Produto..." id="searchInput">
+            </div>
+            <div class="menu" id="navbarLinks">
+                <a href="/index.html">Produtos</a>
+                <a href="../cart">Carrinho</a>
+                <a href="../checkout">Finalizar Compra</a>
+                <a href="../login">Entrar</a>
+                <a href="../register">Cadastrar</a>
+                <button class="hamburger" id="hamburgerMenu">
+                    &#9776;
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h2>Finalizar Compra</h2>
+        <div id="orderSummary"></div>
+        <label for="paymentMethod">Forma de pagamento:</label>
+        <select id="paymentMethod">
+            <option value="creditCard">Cartão de Crédito</option>
+            <option value="boleto">Boleto</option>
+            <option value="pix">Pix</option>
+        </select>
+        <button onclick="placeOrder()">Finalizar Pedido</button>
+    </main>
+    <script src="checkout.js"></script>
+</body>
+</html>
