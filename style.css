@@ -1,3 +1,10 @@
+:root {
+    --cor-primaria-padrao: #4CAF50;
+    --cor-primaria-escura: #45a049;
+    --cor-alerta-padrao: #b15656;
+    --cor-alerta-escuro: #6b3737;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -67,7 +74,7 @@ body, html {
 }
 
 .add-to-cart-btn {
-    background-color: #4CAF50;
+    background-color: var(--cor-primaria-padrao);
     color: white;
     padding: 10px 20px;
     border: none;
@@ -107,7 +114,7 @@ input[type="email"], input[type="password"], input[type="text"], select {
 
 button {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: var(--cor-primaria-padrao);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -116,8 +123,21 @@ button {
     cursor: pointer;
 }
 
+button.add-card {
+    margin: 0;
+    border-radius: 0 0 4px 4px;
+}
+
+button.in-card {
+    background-color: var(--cor-alerta-padrao);
+}
+
 button:hover {
-    background-color: #45a049;
+    background-color: var(--cor-primaria-escura);
+}
+
+button.in-card:hover {
+    background-color: var(--cor-alerta-escuro);
 }
 
 /* Estilos Específicos para o Carrinho e Checkout */

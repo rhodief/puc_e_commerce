@@ -2,6 +2,7 @@
 
 ## TODO
 ### Página Produtos
+- [x] Gerar as imagens
 - [ ] Ajustar script de adicionar no carrinho. 
 - [ ] Ao clicar no mesmo produto, adicionar também a quantidade. 
 - [ ] Gerar as imagens e mais produtos

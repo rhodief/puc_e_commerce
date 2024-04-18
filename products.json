@@ -2,19 +2,50 @@
     {
         "id": 1,
         "name": "Smartphone Futurista",
-        "price": 999.99,
-        "image": "img/smartphone.jpg"
+        "price": 2999.99,
+        "image": "assets/celular.png"
     },
     {
         "id": 2,
         "name": "Tablet do Espaço",
-        "price": 1299.49,
-        "image": "img/tablet.jpg"
+        "price": 3299.49,
+        "image": "assets/tablet.png"
     },
     {
         "id": 3,
         "name": "Laptop Hiper-rápido",
         "price": 2500.00,
-        "image": "img/laptop.jpg"
+        "image": "assets/notebook.png"
+    },
+    {
+        "id": 4,
+        "name": "Mouse Nervoso-Ultra",
+        "price": 350.00,
+        "image": "assets/mouse.png"
+    },
+    {
+        "id": 5,
+        "name": "Teclado Optimus-Prime",
+        "price": 470.00,
+        "image": "assets/teclado.png"
+    },
+    {
+        "id": 6,
+        "name": "Monitor T-Rex Arm",
+        "price": 3699.00,
+        "image": "assets/monitor.png"
+    },
+    {
+        "id": 7,
+        "name": "Fone Radio-X Hazard",
+        "price": 1350.00,
+        "image": "assets/fone.png"
+    },
+    {
+        "id": 8,
+        "name": "Câmera Luiz 4k",
+        "price": 6800.00,
+        "image": "assets/camera.png"
     }    
+    
 ]
