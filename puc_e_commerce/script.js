@@ -85,7 +85,7 @@ function removeFromCart(productId) {
 
 function logout() {
     localStorage.removeItem('loggedUser')
-    window.location = '/'
+    window.location = './'
 }
 
 function loadUserContext() {
@@ -95,7 +95,7 @@ function loadUserContext() {
         const {name, email} = loggedUser
         identifier.innerHTML = `
         <div class="userInfo">
-            <span class="thumb"><img src="/assets/thumb.png"></span>
+            <span class="thumb"><img src="assets/thumb.png"></span>
             <span class="info">
                 <span>${name}</span>
                 <span>${email}</span>
@@ -104,7 +104,7 @@ function loadUserContext() {
         </div>`
         return
     }
-    identifier.innerHTML = `<a href="/pages/login">Entrar</a>`
+    identifier.innerHTML = `<a href="pages/login">Entrar</a>`
 }
 
 document.getElementById('searchInput').addEventListener('input', function() {

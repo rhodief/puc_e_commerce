@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho de Compras</title>
-    <link rel="stylesheet" href="../../style.css">
+    <title>E-Commerce Futurista</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="logo-search">
-                <img src="/assets/logo.webp" alt="Logomarca" class="logo logo-small">
+                <img src="assets/logo.png" alt="Logomarca" class="logo logo-small">
                 <input type="text" placeholder="Buscar Produto..." id="searchInput">
             </div>
             <div class="menu" id="navbarLinks">
-                <a href="/index.html">Produtos</a>
+                <a href="pages/cart">Carrinho</a>
                 <span id="indentifier">
                 </span>
                 <button class="hamburger" id="hamburgerMenu">
@@ -23,16 +23,11 @@
             </div>
         </nav>
     </header>
-    <main class="main-container">
-        <h2>Carrinho de Compras</h2>
-        <div id="cartItems" class="card-product"></div>
-        <footer class="sumary">
-            <div>
-                <p>Total: $<span id="totalPrice">0.00</span></p>
-                <button class="buy" onclick="checkout()">Finalizar Compra</button>
-            </div>
-        </footer>
+    <main>
+        <div class="main-container product-grid" id="productGrid">
+            <!-- Os produtos serão carregados aqui via JavaScript -->
+        </div>
     </main>
-    <script src="cart.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

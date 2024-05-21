@@ -14,12 +14,12 @@ function register() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         const thereIsItemInTheCart = Array.isArray(cart) && cart.length > 0
         if (thereIsItemInTheCart) {
-            window.location = '/pages/checkout'
+            window.location = '../checkout'
             return
         }
-        window.location = '/'
+        window.location = '../../index.html'
     } else {
         alert('Usuário já cadastrado!');
-        window.location = '/pages/login'
+        window.location = '../login'
     }
 }
