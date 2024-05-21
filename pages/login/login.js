@@ -1,14 +1,23 @@
 function login() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const emailInput = document.getElementById('email').value;
+    const passwordInput = document.getElementById('password').value;
 
     // Simulação simplificada: verificar se o email existe e a senha corresponde
     const users = JSON.parse(localStorage.getItem('users')) || [];
-    const userExists = users.find(user => user.email === email && user.password === password);
-
+    const userExists = users.find(user => user.email === emailInput && user.password === passwordInput);
+    console.log('User', userExists)
     if (userExists) {
-        alert('Login bem-sucedido!');
-        // Redirecionar para a página inicial ou de perfil do usuário
+        const name = userExists.name
+        const email = userExists.email
+        localStorage.setItem('loggedUser', JSON.stringify({name, email}))
+        alert(`Olá ${name}!`);
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const thereIsItemInTheCart = Array.isArray(cart) && cart.length > 0
+        if (thereIsItemInTheCart) {
+            window.location = '/pages/checkout'
+            return
+        }
+        window.location = '/'
     } else {
         alert('Usuário ou senha incorretos!');
     }

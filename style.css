@@ -27,12 +27,33 @@ body, html {
 }
 
 .logo {
-    width: 50px;
+    border-radius: 50%;
+}
+
+.logo-small {
+    width: 75px;
     margin-right: 10px;
+}
+
+.main-logo {
+    display: flex;
+    justify-content: center;
+}
+
+
+.logo-big {
+    width: 300px;
+    text-align: center;
 }
 
 #searchInput {
     padding: 5px;
+}
+
+.menu {
+    display: flex;
+    gap: 2em;
+    align-items: center;
 }
 
 .menu a, .menu button {
@@ -47,6 +68,20 @@ body, html {
 .hamburger {
     display: none;
 }
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-container .sumary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 
 .product-grid {
     display: grid;
@@ -69,6 +104,10 @@ body, html {
     border-radius: 5px 5px 0 0;
 }
 
+.sumary .buy {
+    min-width: 300px;
+}
+
 .product-grid > div h3, .product-grid > div p {
     padding: 10px;
 }
@@ -86,6 +125,27 @@ body, html {
 .add-to-cart-btn:hover {
     background-color: #45a049;
 }
+
+.card-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+}
+
+.card-product > div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    gap: 1em
+}
+
+.card-product > div > p {
+    min-width: 300px;
+}
+
 
 header {
     background-color: #333;
@@ -149,12 +209,33 @@ button.in-card:hover {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+.userInfo {
+    display: flex;
+    align-items: center;
+}
+
+.thumb > img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.userInfo .info {
+    display: flex;
+    flex-direction: column;
+}
+
 @media (max-width: 768px) {
     .hamburger {
         display: block;
     }
     .menu a {
         display: none;
+    }
+
+    .logo-big {
+        width: 150px;
+        text-align: center;
     }
 }
 

@@ -1,19 +1,24 @@
 function loadCartItems() {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     const itemsContainer = document.getElementById('cartItems');
+    itemsContainer.innerHTML = ''
     let total = 0;
-
     cartItems.forEach((item, index) => {
         const itemElement = document.createElement('div');
+        const partialPrice =  (item.price * item.quantity)
         itemElement.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" style="width:50px; height:50px;">
+            <img src="./../../${item.image}" alt="${item.name}" style="width:160px; height:100%;">
             <p>${item.name}</p>
             <p>$${item.price}</p>
-            <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
-            <button onclick="removeFromCart(${index})">Remover</button>
+            <div class="detail">
+                <span>Quantidade:</span>
+                <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
+                <p>Total Pacial: $${partialPrice.toFixed(2)}</p>
+                <button onclick="removeFromCart(${index})">Remover</button>
+            </div>
         `;
         itemsContainer.appendChild(itemElement);
-        total += item.price * item.quantity;
+        total += partialPrice;
     });
 
     document.getElementById('totalPrice').textContent = total.toFixed(2);
@@ -33,11 +38,44 @@ function removeFromCart(index) {
     loadCartItems(); // Recarrega os itens do carrinho após a remoção
 }
 
-function checkout() {
-    // Simulação de finalização de compra
-    alert('Compra finalizada com sucesso!');
-    localStorage.removeItem('cart'); // Limpa o carrinho
-    loadCartItems(); // Recarrega os itens do carrinho vazio
+function generateRandomNumber() {
+    return Math.floor(Math.random() * 9000) + 1000;
 }
 
-document.addEventListener('DOMContentLoaded', loadCartItems);
+function checkout() {
+    const user = JSON.parse(localStorage.getItem('loggedUser'))
+    if(!user) {
+        window.location = '/pages/login/'
+        return
+    }
+    window.location = '/pages/checkout/'
+}
+
+function logout() {
+    localStorage.removeItem('loggedUser')
+    window.location = '/'
+}
+
+function loadUserContext() {
+    const loggedUser = JSON.parse(localStorage.getItem('loggedUser')) || null;
+    const identifier = document.getElementById('indentifier')
+    if (loggedUser) {
+        const {name, email} = loggedUser
+        identifier.innerHTML = `
+        <div class="userInfo">
+            <span class="thumb"><img src="/assets/thumb.png"></span>
+            <span class="info">
+                <span>${name}</span>
+                <span>${email}</span>
+            </span>
+            <button onclick="logout()">sair</button>
+        </div>`
+        return
+    }
+    identifier.innerHTML = `<a href="/pages/login">Entrar</a>`
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadCartItems()
+    loadUserContext()
+});

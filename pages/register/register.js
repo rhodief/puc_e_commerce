@@ -10,8 +10,16 @@ function register() {
         users.push({ name, email, password });
         localStorage.setItem('users', JSON.stringify(users));
         alert('Cadastro realizado com sucesso!');
-        // Redirecionar para a página de login ou início
+        localStorage.setItem('loggedUser', JSON.stringify({name, email}))
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const thereIsItemInTheCart = Array.isArray(cart) && cart.length > 0
+        if (thereIsItemInTheCart) {
+            window.location = '/pages/checkout'
+            return
+        }
+        window.location = '/'
     } else {
         alert('Usuário já cadastrado!');
+        window.location = '/pages/login'
     }
 }

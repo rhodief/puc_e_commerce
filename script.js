@@ -9,12 +9,17 @@ document.getElementById('hamburgerMenu').addEventListener('click', function() {
 
 
 // Carregar produtos do 'products.json' e exibir no grid
-function loadProducts() {
+function loadProducts(filterString = '') {
     fetch('products.json')
     .then(response => response.json())
-    .then(products => {
+    .then(allProducts => {
         const grid = document.getElementById('productGrid');
+        grid.innerHTML = ''
         const cart = getCart()
+        let products = allProducts
+        if (filterString) {
+            products = allProducts.filter(product => product.name.toLowerCase().includes(filterString.toLowerCase()));
+        }
         products.forEach(product => {
             const productCard = document.createElement('div');
             const isInCart = cart.some(pCart => product.id === pCart.id)
@@ -65,9 +70,9 @@ function addToCart(productId) {
         });
     } else {
         if (confirm(`Produto já está no carrinho. Deseja removê-lo?`)) {
-            removeFromCart(productId) 
+            removeFromCart(productId)
             toggleBotaoCartao(productId)
-        } 
+        }
     }
 }
 
@@ -75,9 +80,41 @@ function removeFromCart(productId) {
     let cart = getCart()
     const productIndex = cart.findIndex((product) => product.id == productId)
     cart.splice(productIndex, 1);
-    localStorage.setItem('cart', JSON.stringify(cart));    
+    localStorage.setItem('cart', JSON.stringify(cart));
 }
 
+function logout() {
+    localStorage.removeItem('loggedUser')
+    window.location = '/'
+}
+
+function loadUserContext() {
+    const loggedUser = JSON.parse(localStorage.getItem('loggedUser')) || null;
+    const identifier = document.getElementById('indentifier')
+    if (loggedUser) {
+        const {name, email} = loggedUser
+        identifier.innerHTML = `
+        <div class="userInfo">
+            <span class="thumb"><img src="/assets/thumb.png"></span>
+            <span class="info">
+                <span>${name}</span>
+                <span>${email}</span>
+            </span>
+            <button onclick="logout()">sair</button>
+        </div>`
+        return
+    }
+    identifier.innerHTML = `<a href="/pages/login">Entrar</a>`
+}
+
+document.getElementById('searchInput').addEventListener('input', function() {
+    const query = this.value;
+    const filteredResults = loadProducts(query);
+});
+
 // Inicializa a página com produtos carregados
-document.addEventListener('DOMContentLoaded', loadProducts);
+document.addEventListener('DOMContentLoaded', () => {
+    loadProducts()
+    loadUserContext()
+});
 
