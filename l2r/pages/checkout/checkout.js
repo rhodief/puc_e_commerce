@@ -82,7 +82,7 @@ function handlePaymentMethodChange(event) {
         const loggedUser = JSON.parse(localStorage.getItem('loggedUser')) || {name: ''};
         boletoTemplate.innerHTML = `
                     <h3>Boleto</h3>
-                    <p>Beneficiário: Empresa XYZ</p>
+                    <p>Beneficiário: L2R Inc.</p>
                     <p>Pagador: ${loggedUser.name}</p>
                     <p>Valor: R$ ${(total).toFixed(2)}</p>
                     <p>Vencimento: ${expirationDay}</p>
@@ -122,9 +122,23 @@ function loadUserContext() {
     identifier.innerHTML = `<a href="../login">Entrar</a>`
 }
 
+function loadHeader() {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const navbarLinks = document.getElementById('navbarLinks');
+    const closeMenu = document.getElementById('closeMenu')
+
+    hamburgerMenu.addEventListener('click', function() {
+        navbarLinks.classList.toggle('overlay');
+    });
+    closeMenu.addEventListener('click', function() {
+        navbarLinks.classList.toggle('overlay');
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     loadOrderSummary()
     loadUserContext()
+    loadHeader()
 });
 const paymentMethodSelect = document.getElementById('paymentMethod');
 paymentMethodSelect.addEventListener('change', handlePaymentMethodChange);

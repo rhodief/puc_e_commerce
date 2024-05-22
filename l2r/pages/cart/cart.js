@@ -75,7 +75,21 @@ function loadUserContext() {
     identifier.innerHTML = `<a href="../login">Entrar</a>`
 }
 
+function loadHeader() {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const navbarLinks = document.getElementById('navbarLinks');
+    const closeMenu = document.getElementById('closeMenu')
+
+    hamburgerMenu.addEventListener('click', function() {
+        navbarLinks.classList.toggle('overlay');
+    });
+    closeMenu.addEventListener('click', function() {
+        navbarLinks.classList.toggle('overlay');
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    loadCartItems()
     loadUserContext()
+    loadCartItems()
+    loadHeader()
 });

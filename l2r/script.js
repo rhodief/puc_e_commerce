@@ -1,11 +1,15 @@
-document.getElementById('hamburgerMenu').addEventListener('click', function() {
-    var links = document.getElementById('navbarLinks');
-    if (links.style.display === 'block') {
-        links.style.display = 'none';
-    } else {
-        links.style.display = 'block';
-    }
-});
+function loadHeader() {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const navbarLinks = document.getElementById('navbarLinks');
+    const closeMenu = document.getElementById('closeMenu')
+
+    hamburgerMenu.addEventListener('click', function() {
+        navbarLinks.classList.toggle('overlay');
+    });
+    closeMenu.addEventListener('click', function() {
+        navbarLinks.classList.toggle('overlay');
+    });
+}
 
 
 // Carregar produtos do 'products.json' e exibir no grid
@@ -49,6 +53,7 @@ function toggleBotaoCartao(produtoId) {
             classList.add('in-card')
             btn.textContent = 'Remover do Carrinho'
         }
+        verifyCartVolume()
     }
 }
 
@@ -107,6 +112,23 @@ function loadUserContext() {
     identifier.innerHTML = `<a href="pages/login">Entrar</a>`
 }
 
+function verifyCartVolume() {
+    const theVolume = 'any-cart';
+    const classTarget = '.logo-cart'
+    const cart = getCart()
+    if (Array.isArray(cart) && cart.length > 0) {
+        const elements = document.querySelectorAll(classTarget);
+        elements.forEach(function(element) {
+        element.classList.add(theVolume);
+    });
+    } else {
+        const elements = document.querySelectorAll(classTarget);
+        elements.forEach(function(element) {
+        element.classList.remove(theVolume);
+    });
+    }
+}
+
 document.getElementById('searchInput').addEventListener('input', function() {
     const query = this.value;
     const filteredResults = loadProducts(query);
@@ -114,7 +136,9 @@ document.getElementById('searchInput').addEventListener('input', function() {
 
 // Inicializa a página com produtos carregados
 document.addEventListener('DOMContentLoaded', () => {
+    loadHeader()
     loadProducts()
     loadUserContext()
+    verifyCartVolume()
 });
 

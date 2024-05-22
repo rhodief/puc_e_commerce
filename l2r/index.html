@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Commerce Futurista</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
         <nav class="navbar">
@@ -14,9 +16,18 @@
                 <input type="text" placeholder="Buscar Produto..." id="searchInput">
             </div>
             <div class="menu" id="navbarLinks">
-                <a href="pages/cart">Carrinho</a>
+                <a href="pages/cart" class="logo-cart insider">
+                    <span class="anything-cart">🛒</span>
+                    <span> Carrinho</span>
+                </a>
                 <span id="indentifier">
                 </span>
+                <span class="close" id="closeMenu">&#10006;</span>
+            </div>
+            <div class="menu-mobile">
+                <a href="pages/cart" class="logo-cart">
+                    <span class="icon">&#128722;</span>
+                </a>
                 <button class="hamburger" id="hamburgerMenu">
                     &#9776;
                 </button>
@@ -30,4 +41,5 @@
     </main>
     <script src="script.js"></script>
 </body>
+
 </html>
