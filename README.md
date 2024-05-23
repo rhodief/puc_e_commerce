@@ -1,6 +1,7 @@
 # E-Comerce teste PUCPR
 
-## TODO
+## ~~TODO~~ DONE
+## Apresentado
 
 ### Página Produtos
 
@@ -8,6 +9,7 @@
 - [x] Ajustar script de adicionar no carrinho.
 - [x] Ao clicar no produto, indicar que já está no carrinho
 - [x] Gerar as imagens e mais produtos
+- [x] Ajuste mensagem adicionar/remover
 
 ### Página Carrinho
 
@@ -40,3 +42,11 @@
 ### Pesquisa
 
 - [x] Pesquisar Produto
+
+### Server
+
+- [x] Retornar lista de produtos
+- [x] Ajuste do CORS
+- [x] Ajuste chamada no front
+
+
