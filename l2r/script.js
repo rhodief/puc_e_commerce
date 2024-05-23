@@ -1,3 +1,7 @@
+URL_SERVER = 'http://localhost:8080/api/data';
+URL_ARQ = 'products.json'
+URL_USADA = URL_SERVER
+
 function loadHeader() {
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const navbarLinks = document.getElementById('navbarLinks');
@@ -12,9 +16,10 @@ function loadHeader() {
 }
 
 
-// Carregar produtos do 'products.json' e exibir no grid
+/* Carregar produtos do arquivo 'products.json' da URL do server ou do arquivo
+   e exibir no grid */
 function loadProducts(filterString = '') {
-    fetch('products.json')
+    fetch(URL_USADA)
     .then(response => response.json())
     .then(allProducts => {
         const grid = document.getElementById('productGrid');
@@ -31,7 +36,9 @@ function loadProducts(filterString = '') {
                 <img src="${product.image}" alt="${product.name}" style="width:100%; border-radius: 5px 5px 0 0;">
                 <h3>${product.name}</h3>
                 <p>$${product.price}</p>
-                <button onclick="addToCart(${product.id})" id="item-card-${product.id}" class="add-card ${isInCart ? 'in-card' : ''}">Adicionar ao Carrinho</button>
+                <button onclick="addToCart(${product.id})" id="item-card-${product.id}" class="add-card ${isInCart ? 'in-card' : ''}">
+                          ${isInCart ? 'Remover do Carrinho' : 'Adicionar ao Carrinho'}
+                </button>
             `;
             grid.appendChild(productCard);
         });
@@ -62,7 +69,7 @@ function addToCart(productId) {
     let cart = getCart();
     const productExists = cart.some(product => product.id === productId);
     if (!productExists) {
-        fetch('products.json')
+        fetch(URL_USADA)
         .then(response => response.json())
         .then(products => {
             const product = products.find(p => p.id === productId);
