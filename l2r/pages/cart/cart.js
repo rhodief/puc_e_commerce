@@ -1,3 +1,6 @@
+/* Carrega do storage e exibe os itens do carrinho de compras
+   Calcula o total parcial e o total final 
+   Retorna o elemento html para o card página */
 function loadCartItems() {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     const itemsContainer = document.getElementById('cartItems');
@@ -24,6 +27,8 @@ function loadCartItems() {
     document.getElementById('totalPrice').textContent = total.toFixed(2);
 }
 
+/* atualiza a quantidade no carrinho do storage
+*/
 function updateQuantity(index, quantity) {
     const cart = JSON.parse(localStorage.getItem('cart'));
     cart[index].quantity = parseInt(quantity);
@@ -31,6 +36,8 @@ function updateQuantity(index, quantity) {
     loadCartItems(); // Recarrega os itens do carrinho para atualizar o total
 }
 
+/* remove o item selecionado do carrinho do storage
+*/
 function removeFromCart(index) {
     let cart = JSON.parse(localStorage.getItem('cart'));
     cart.splice(index, 1);
